@@ -9,7 +9,7 @@ async function run() {
   const imageName = core.getInput("image-name").toLowerCase();
   const githubRepo = process.env.GITHUB_REPOSITORY.toLowerCase();
   const tag = core.getInput("tag").toLowerCase();
-  const fullImageReference = `https://ghrc.io/${githubRepo}/${imageName}:${tag}`;
+  const fullImageReference = `https://ghcr.io/${githubRepo}/${imageName}:${tag}`;
   
   try {
     await exec.exec(
