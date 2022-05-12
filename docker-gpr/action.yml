@@ -1,0 +1,31 @@
+name: Docker-GPR
+description: Build, Tag and Push images from a Dockerfile to the GPR
+
+inputs:
+  repo-token:
+    description: Access token to use the api, use GITHUB_TOKEN silly, it's better
+    default: No token was supplied... now you know why things broke!
+    required: true
+  image-name:
+    description: name for Docker image-name
+    required: true
+  dockerfile-location:
+    description: Where in the repo the Dockerfile is located
+    default: .
+    required: false
+  dockerfile-name:
+    description: The name of the Dockerfile (eg. Dockerfile.prod)
+    default: Dockerfile
+    required: false
+  tag:
+    description: tag for Docker image
+    default: ${{ github.sha }}
+    required: false
+    
+outputs:
+  imageUrl:
+    description: Fully constructed URL to image for use when deploying
+
+runs:
+  using: "node12"
+  main: main.js
